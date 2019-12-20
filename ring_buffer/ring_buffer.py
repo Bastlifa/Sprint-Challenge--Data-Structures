@@ -18,7 +18,6 @@ class RingBuffer:
             else:
                 self.current = self.storage.head
             
-
     def get(self):
         # Note:  This is the only [] allowed
         list_buffer_contents = []
@@ -29,7 +28,6 @@ class RingBuffer:
             if cur.value is not None:
                 list_buffer_contents.append(cur.value)
             cur = cur.next
-
 
         return list_buffer_contents
 
