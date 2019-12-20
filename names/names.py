@@ -48,26 +48,29 @@ names_2 = f.read().split("\n")  # List containing 10000 names
 f.close()
 
 duplicates = []
+
+# This was O(n^2)
+
 # for name_1 in names_1:
 #     for name_2 in names_2:
 #         if name_1 == name_2:
 #             duplicates.append(name_1)
 
 
-name_tree = BinarySearchTree(names_1[0])
+# name_tree = BinarySearchTree(names_1[0])
 
-for i in range(1, len(names_1)):
-    name_tree.insert(names_1[i])
+# for i in range(1, len(names_1)):
+#     name_tree.insert(names_1[i])
     
-for n in names_2:
-    if name_tree.contains(n):
-        duplicates.append(n)
+# for n in names_2:
+#     if name_tree.contains(n):
+#         duplicates.append(n)
 
 
 
-end_time = time.time()
-print (f"{len(duplicates)} duplicates:\n\n{', '.join(duplicates)}\n\n")
-print (f"runtime: {end_time - start_time} seconds")
+# end_time = time.time()
+# print (f"{len(duplicates)} duplicates:\n\n{', '.join(duplicates)}\n\n")
+# print (f"runtime: {end_time - start_time} seconds")
 
 # ---------- Stretch Goal -----------
 # Python has built-in tools that allow for a very efficient approach to this problem
@@ -89,5 +92,41 @@ print (f"runtime: {end_time - start_time} seconds")
 # end_time = time.time()
 # print (f"{len(d)} duplicates:\n\n{', '.join(d)}\n\n")
 # print (f"runtime: {end_time - start_time} seconds")
+
+# Took the same amount of time: 0.075975 seconds
+
+
+from collections import Counter
+# cnt = Counter()
+
+# name_tree = BinarySearchTree(names_1[0])
+
+# for name in names_1:
+#     cnt[name] +=1
+
+# for name in names_2:
+#     cnt[name] +=1
+
+# cnt = cnt.items()
+
+cnt = Counter()
+cnt2 = Counter()
+
+for name in names_1:
+    if not cnt[name]:
+        cnt[name] += 1
+
+for name in names_2:
+    if not cnt2[name]:
+        cnt2[name] += 1
+
+cnt += cnt2
+cnt_list = cnt.items()
+
+a = [c[0] for c in cnt_list if c[1] > 1]
+
+end_time = time.time()
+print (f"{len(a)} duplicates:\n\n{', '.join(a)}\n\n")
+print (f"runtime: {end_time - start_time} seconds")
 
 # Took the same amount of time: 0.075975 seconds
