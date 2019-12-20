@@ -63,6 +63,8 @@ for n in names_2:
     if name_tree.contains(n):
         duplicates.append(n)
 
+
+
 end_time = time.time()
 print (f"{len(duplicates)} duplicates:\n\n{', '.join(duplicates)}\n\n")
 print (f"runtime: {end_time - start_time} seconds")
@@ -71,3 +73,21 @@ print (f"runtime: {end_time - start_time} seconds")
 # Python has built-in tools that allow for a very efficient approach to this problem
 # What's the best time you can accomplish with no restrictions on techniques or data
 # structures?
+
+# from collections import deque
+# d = deque()
+
+# name_tree = BinarySearchTree(names_1[0])
+
+# for i in range(1, len(names_1)):
+#     name_tree.insert(names_1[i])
+    
+# for n in names_2:
+#     if name_tree.contains(n):
+#         d.append(n)
+
+# end_time = time.time()
+# print (f"{len(d)} duplicates:\n\n{', '.join(d)}\n\n")
+# print (f"runtime: {end_time - start_time} seconds")
+
+# Took the same amount of time: 0.075975 seconds
